@@ -1,0 +1,4 @@
+*.o
+/make.depend
+/make.depend.bak
+/asm8
