@@ -460,16 +460,16 @@ bytecount_t assembleSHR(assembler_t *a, char *arg1, char *arg2, char *arg3) {
 bytecount_t assembleSKP(assembler_t *a, char *arg1, char *arg2, char *arg3) {
     // Ex9E - SKP Vx
     unsigned char x = strtol(arg1+1, NULL, 16) & 0x0F;
-    printf("SKP V%xn", x);
+    printf("SKP V%x\n", x);
     a->memory[a->addr]   = 0xE0 | x;
     a->memory[a->addr+1] = 0x9E;
     return 2;
 }
 
-bytecount_t assembleSKPN(assembler_t *a, char *arg1, char *arg2, char *arg3) {
-    // ExA1 - SKPN Vx
+bytecount_t assembleSKNP(assembler_t *a, char *arg1, char *arg2, char *arg3) {
+    // ExA1 - SKNP Vx
     unsigned char x = strtol(arg1+1, NULL, 16) & 0x0F;
-    printf("SKPN V%xn", x);
+    printf("SKNP V%x\n", x);
     a->memory[a->addr]   = 0xE0 | x;
     a->memory[a->addr+1] = 0xA1;
     return 2;
@@ -519,7 +519,7 @@ struct { const char *name; asmFn fn; } instructions[] = {
     { "SHL",  assembleSHL  },
     { "SHR",  assembleSHR  },
     { "SKP",  assembleSKP  },
-    { "SKPN", assembleSKPN },
+    { "SKNP", assembleSKNP },
     { "DB",   assembleDB   },
     { "DW",   assembleDW   },
     { NULL, NULL }
