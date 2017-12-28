@@ -119,7 +119,7 @@ bytecount_t assembleJP(assembler_t *a, char *arg1, char *arg2, char *arg3) {
             else {
                 printf("%s:%u:1: warning: undefined label %s\n",
                        a->filename, a->linenum, arg2);
-
+                registerRPLine(a);
             }
         }
 
@@ -214,7 +214,6 @@ bytecount_t assembleCALL(assembler_t *a, char *arg1, char *arg2, char *arg3) {
         if (target == 0xFFFF) {
             printf("%s:%u:1: warning: undefined label %s\n",
                    a->filename, a->linenum, arg2);
-
             registerRPLine(a);
         }
     }
@@ -235,7 +234,6 @@ bytecount_t assembleSYS(assembler_t *a, char *arg1, char *arg2, char *arg3) {
         if (target == 0xFFFF) {
             printf("%s:%u:1: warning: undefined label %s\n",
                    a->filename, a->linenum, arg2);
-
             registerRPLine(a);
         }
     }
