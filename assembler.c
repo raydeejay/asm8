@@ -319,7 +319,7 @@ bytecount_t assembleLD(assembler_t *a, char *arg1, char *arg2, char *arg3) {
         a->memory[a->addr]   = 0xF0 | x;
         a->memory[a->addr+1] = 0x07;
     }
-    else if (arg1[0] == 'V' && arg2[0] == '[' && arg2[1] == 'I' && arg2[1] == ']') {
+    else if (arg1[0] == 'V' && arg2[0] == '[' && arg2[1] == 'I' && arg2[2] == ']') {
         // Fx65 - LD Vx, [I]
         unsigned char x = strtol(arg1+1, NULL, 16) & 0x0F;
         printf("LD V%x, [I]\n", x);
